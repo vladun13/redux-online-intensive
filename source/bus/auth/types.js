@@ -4,4 +4,5 @@ export const types = {
 
 	//ASYNC
 	SIGNUP_ASYNC: 'SIGNUP_ASYNC',
+	LOGIN_ASYNC: 'LOGIN_ASYNC',
 };
