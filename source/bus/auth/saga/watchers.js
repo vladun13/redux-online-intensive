@@ -7,6 +7,7 @@ import { types } from '../types';
 //Workers
 import { signup } from './workers';
 import { login } from './workers';
+import { logout } from './workers';
 import { authenticate } from './workers';
 import { initialize } from './workers';
 
@@ -27,8 +28,14 @@ function* watchInitialize() {
 	yield takeEvery(types.INITIALIZE_ASYNC, initialize);
 }
 
+
+function* watchLogout() {
+	yield takeEvery(types.LOGOUT_ASYNC, logout);
+}
+
 export function* watchAuth() {
 	yield all([call(watchSignup), call(watchLogin),
-			   call(watchAuthenticate), call(watchInitialize)
+			   call(watchAuthenticate), call(watchInitialize),
+			   call(watchLogout)
 			]);
 }
