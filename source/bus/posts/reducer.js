@@ -10,9 +10,6 @@ const list1 = List([1, 2, 3]);
 
 const list2 = list1.push(4);
 
-console.log(list1);
-console.log(list2);
-
 
 export const postsReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -24,6 +21,9 @@ export const postsReducer = (state = initialState, action) => {
 
 		case types.CLEAR_POSTS:
 			return state.clear();
+
+		case types.REMOVE_POST:
+			return state.filter();
 	
 		default:
 			return state;
