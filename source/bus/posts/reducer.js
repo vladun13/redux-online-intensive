@@ -11,6 +11,7 @@ const list1 = List([1, 2, 3]);
 const list2 = list1.push(4);
 
 
+
 export const postsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.FILL_POSTS:
