@@ -19,7 +19,7 @@ export default class Post extends Component {
 
     _removePost = () => {
         const { actions, id } = this.props;
-
+        console.log(actions);
         actions.removePostAsync(id);
     };
 
