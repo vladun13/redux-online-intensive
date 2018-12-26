@@ -12,6 +12,7 @@ const list2 = list1.push(4);
 
 
 
+
 export const postsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.FILL_POSTS:
@@ -24,7 +25,7 @@ export const postsReducer = (state = initialState, action) => {
 			return state.clear();
 
 		case types.REMOVE_POST:
-			return state.filter((state, postId) => index !== action.payload);
+			return state.filter((post) => action.payload !== post.get('postId'));
 	
 		default:
 			return state;

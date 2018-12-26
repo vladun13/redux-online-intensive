@@ -25,7 +25,7 @@ export const postsActions = {
 	},
 	removePost: (postId) => {
 		return({
-			type: 		types.REMOVE_POSTS,
+			type: 		types.REMOVE_POST,
 			payload: 	postId,
 		});
 	},
