@@ -71,6 +71,15 @@ export const api = {
 					Authorization: this.token,
 				},
 			})
+		},
+
+		like(postId) {
+			return fetch(`${MAIN_URL}/feed/like/${postId}`, {
+				method: 'PUT',
+				headers: {
+					Authorization: this.token,
+				},
+			})
 		}
 	}
 };
