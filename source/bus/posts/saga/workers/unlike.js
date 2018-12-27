@@ -6,11 +6,11 @@ import { api } from '../../../../REST';
 import { postsActions } from '../../actions';
 import { uiActions } from '../../../ui/actions';
 
-export function* likePost ({ payload: postId }) {
+export function* unlikePost ({ payload: postId }) {
     try {
         yield put(uiActions.startFetching());
 
-        const response = yield apply(api, api.posts.like, [postId]);
+        const response = yield apply(api, api.posts.unlike, [postId]);
 
         if (response.status !==204) {
             const { message } = yield apply(response, response.json);
@@ -26,7 +26,7 @@ export function* likePost ({ payload: postId }) {
 
         yield put(postsActions.likePost({ liker, postId }));
     } catch (error) {
-        yield put(uiActions.emitError(error, '-> likePost worker'));
+        yield put(uiActions.emitError(error, '-> unlikePost worker'));
     } finally {
         yield put(uiActions.stopFetching());
     }

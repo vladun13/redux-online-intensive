@@ -23,7 +23,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators({ fetchPostsAsync: postsActions.fetchPostsAsync, createPostAsync: postsActions.createPostAsync, removePostAsync: postsActions.removePostAsync }, 
+        actions: bindActionCreators({ 
+        fetchPostsAsync: postsActions.fetchPostsAsync,
+        createPostAsync: postsActions.createPostAsync,
+        removePostAsync: postsActions.removePostAsync,
+        likePostAsync: postsActions.likePostAsync,
+        unlikePostAsync: postsActions.unlikePostAsync,
+     }, 
         dispatch)
     };
 };
