@@ -9,21 +9,26 @@ import Private from './Private';
 import Public from './Public';
 
 //Actions 
-import { authActions } from '../bus/auth/actions'
+import { authActions } from '../bus/auth/actions';
+import { socketActions } from '../bus/socket/actions';
 
 //Components
 import { Loading } from '../components';
+
+// WebSocket
+import { joinSocketChannel, socket } from '../init/socket';
 
 const mapStateToProps = (state) => {
     return{
         isAuthenticated:    state.auth.get('isAuthenticated'),
         isInitialized:      state.auth.get('isInitialized'),
-    }
-}
+    };
+};
 
 const mapDispatchToProps = {
 	initializeAsync: authActions.initializeAsync,
-}
+     ...socketActions,
+};
 
 @hot(module)
 @withRouter
@@ -32,17 +37,25 @@ const mapDispatchToProps = {
 	mapDispatchToProps
 )
 export default class App extends Component {
-    componentDidMount() {
-    	this.props.initializeAsync();
-    }
+    componentDidMount () {
+        const { initializeAsync, listenConnection } = this.props;
 
+        initializeAsync();
+        listenConnection();
+        joinSocketChannel();
+    }
+    componentWillUnmount () {
+        socket.removeListener('connect');
+        socket.removeListener('disconnect');
+    }
+    
     render () {
-        const { isAuthenticated, isInitialized } = this.props;
+        const { isAuthenticated, isInitialized, listenPosts } = this.props;
 
         if (!isInitialized) {
         	return <Loading />;
         }
 
-        return isAuthenticated ? <Private /> : <Public />;
+        return isAuthenticated ? <Private listenPosts = { listenPosts } /> : <Public />;
     }
 }
