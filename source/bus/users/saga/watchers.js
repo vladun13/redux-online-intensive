@@ -5,7 +5,7 @@ import { takeEvery, all, call } from 'redux-saga/effects';
 import { types } from '../types';
 
 //Workers
-import { worker } from './workers';
+import { fetchUsers } from './workers';
 
 function* watchFetchUsers() {
 	yield takeEvery(types.FETCH_USERS_ASYNC, fetchUsers);

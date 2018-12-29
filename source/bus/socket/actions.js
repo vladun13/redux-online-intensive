@@ -14,11 +14,36 @@ export const socketActions = {
         });
     },
 
-    listenPosts: () => (dispatch) => {
-    	socket.on('create', (event) => {
-			const { data: post } = JSON.parse(event);
+    listenPosts: () => (dispatch, getState) => {
+        socket.on('create', (event) => {
+            const { data: post } = JSON.parse(event);
 
-			dispatch(postsActions.createPost(post))    			
+            dispatch(postsActions.createPost(post))             
+        });
+    
+        socket.on('remove', (event) => {
+            const { data: post } = JSON.parse(event);
+
+            dispatch(postsActions.removePost(post));             
+        });
+    
+    	socket.on('like', (event) => {
+			const { data, meta } = JSON.parse(event);
+
+            if(meta.action === 'like') {
+                const liker = getState().users.find(user => user.get('id') === data.userId).
+                delete('avatar');
+
+    			dispatch(postsActions.likePost({
+                    postId:     data.postIs,
+                    liker,
+                }))    			
+            } else {
+                dispatch(postsActions.unlikePost(data));
+            }
+
     	});
+
+
     }
 };
