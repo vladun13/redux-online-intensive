@@ -14,7 +14,7 @@ export const profileActions = {
 			type: types.UPDATE_AVATAR,
 			payload: newAvatarUrl,
 		};
-	},	
+	},
 	clearProfile: () => {
 		return {
 			type: types.CLEAR_PROFILE,
@@ -33,6 +33,12 @@ export const profileActions = {
 		return {
 			type: types.UPDATE_AVATAR_ASYNC,
 			payload: newAvatar,
+		};
+	},
+	updatePasswordAsync: (passwordData) => {
+		return {
+			type: types.UPDATE_PASSWORD_ASYNC,
+			payload: passwordData,
 		};
 	},
 }

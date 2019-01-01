@@ -13,7 +13,6 @@ import { book } from '../../navigation/book';
 
 //Actions
 import { profileActions } from '../../bus/profile/actions';
-import { authActions } from '../../bus/auth/actions';
 
 
 const mapStateToProps = (state) => {
@@ -23,7 +22,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = profileActions;
+const mapDispatchToProps = {
+    updatePasswordAsync: profileActions.updatePasswordAsync,
+}
 
 @connect(mapStateToProps,
         mapDispatchToProps
@@ -31,13 +32,6 @@ const mapDispatchToProps = profileActions;
 
 
 export default class NewPassword extends Component {
-    static defaultProps = {
-        // State
-        isFetching: false,
-
-        // Actions
-        updatePasswordAsync: () => {},
-    };
 
     _submitPassword = (passwordData) => {
         const { updatePasswordAsync } = this.props;
