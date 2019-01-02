@@ -7,14 +7,13 @@ import { api } from '../../../../REST';
 import { uiActions } from '../../../ui/actions';
 import { profileActions } from '../../../profile/actions';
 
-export function* updateAvatar ({ payload: [newAvatar]}) {
+export function* updateAvatar ({ payload: [newAvatar] }) {
     try {
         yield put(uiActions.startFetching());
-
         const avatarFormData = yield new FormData();
         yield apply(avatarFormData, avatarFormData.append, ['avatar', newAvatar]);
 
-        const response = yield apply(api, api.profile.updateAvatar, [{avatarFormData}]);
+        const response = yield apply(api, api.profile.updateAvatar, [avatarFormData]);
         const { data: newAvatarUrl, message } = yield apply(response, response.json);
 
         if (response.status !==200) {
