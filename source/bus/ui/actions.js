@@ -19,7 +19,7 @@ export const uiActions = {
             type: types.SET_ONLINE_STATE,
         };
     },
-    setOfflineState: () => {
+  setOfflineState: () => {
         return {
             type: types.SET_OFFLINE_STATE,
         };

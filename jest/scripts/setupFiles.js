@@ -45,6 +45,11 @@ const fetchResponseFail400 = {
     json:   jest.fn(() => Promise.resolve(responseDataFail)),
 };
 
+const newName = {
+    firstName: 'Walter',
+    lastName:  'White',
+};
+
 const url = 'https://www.url.com';
 
 const users = {
@@ -54,7 +59,17 @@ const users = {
     lastName:  'TEST_LAST_NAME',
 };
 
+const newAvatar = ['avatar'];
+
+const newPassword = {
+    oldPassword: 12345,
+    newPassword: 123456,
+};
+
 global.__ = {
+    newAvatar,
+    newPassword,
+    newName,
     users,
     userProfile,
     errorMessage,
