@@ -47,7 +47,15 @@ const fetchResponseFail400 = {
 
 const url = 'https://www.url.com';
 
+const users = {
+    id:        'TEST_ID',
+    avatar:    'TEST_AVATAR',
+    firstName: 'TEST_FIRST_NAME',
+    lastName:  'TEST_LAST_NAME',
+};
+
 global.__ = {
+    users,
     userProfile,
     errorMessage,
     token,
