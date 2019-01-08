@@ -95,7 +95,7 @@ export const api = {
 			})
 		},
 		updateAvatar(avatarFormData) {
-			return fetch(`${MAIN_URL}image`, {
+			return fetch(`${MAIN_URL}/image`, {
 				method: 	'POST',
 				headers: 	{
 					Authorization:this.token,
