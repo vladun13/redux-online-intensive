@@ -34,11 +34,11 @@ Immutable.Map {
     expect(profileReducer(void 0, profileActions.updateAvatar(__.url)))
       .toMatchInlineSnapshot(`
 Immutable.Map {
-  "id": "TEST_ID",
-  "firstName": "Walter",
-  "lastName": "White",
-  "avatar": "TEST_AVATAR",
-  "token": "TEST_TOKEN",
+  "id": "",
+  "firstName": "",
+  "lastName": "",
+  "avatar": "https://www.url.com",
+  "token": "",
 }
 `);
   });
